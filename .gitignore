@@ -243,5 +243,5 @@ ModelManifest.xml
 .fake/
 
 # user define
-/LingLite/LingLite/DataSource/*
-/LingLite/LingLite/ResultFiles/*
+/LingLite/HorseRacingDemo/DataSource/*
+/LingLite/HorseRacingDemo/ResultFiles/*
