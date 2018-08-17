@@ -25,16 +25,16 @@ class HorseRacing(object):
     """Horse racing test"""
 
     def __init__(self):
+        self.__hrExcel = HorseRacingExcel.HorseRacingExcel()
         self.__mysqlInsertSQL = "INSERT INTO vs_horse_racing_event_cards (event_id, rtp_desc, xml_details) VALUES (%s, '%s', '%s')"
         self.__mssqlInsertSQL = "INSERT INTO vs_horse_racing_event_cards (event_id, rtp_desc, xml_details) VALUES (%s, N'%s', N'%s')"
-        self.__hrExcel = HorseRacingExcel.HorseRacingExcel()
 
     def GetXMLCommonPath(self):
         XMLCommonPath = sys.path[0]
         XMLCommonPath += "\\DataSource\\"
         return XMLCommonPath
 
-    def GetXMLDirectoryList(self, XMLCommonPath, isPrintDirectoryList = False):
+    def GetXMLDirectoryList(self, XMLCommonPath, isPrintDirectoryList=False):
         XMLDirectoryList = [ (XMLCommonPath + SubDir) for SubDir in os.listdir(XMLCommonPath) if os.path.isdir(XMLCommonPath + SubDir)]
         if isPrintDirectoryList:
             for XMLDirectory in XMLDirectoryList:
@@ -42,7 +42,7 @@ class HorseRacing(object):
             print('\n')
         return XMLDirectoryList
 
-    def ReadXMLData(self, XMLDirectory, XMLFileName, isPrintFilePath = False):
+    def ReadXMLData(self, XMLDirectory, XMLFileName, isPrintFilePath=False):
         DotIndex = XMLFileName.find('.')
         EventID = XMLFileName[DotIndex - 4 : DotIndex]
         XMLFilePath = XMLDirectory + "\\" + XMLFileName
@@ -212,7 +212,7 @@ class HorseRacing(object):
             print("%s : EventID = %s, MaxPrice = %s" % (rtp, RTPMaxPriceEventIDMap[rtp], RTPMaxPriceMap[rtp]))
 
     def AdjustProbWinForXML(self):
-        ProbWinOffsetList= []
+        ProbWinOffsetList = []
         CorrectTotalProbWin = 1.000000
         XMLDirectoryList = self.GetXMLDirectoryList(self.GetXMLCommonPath())
 
@@ -228,7 +228,7 @@ class HorseRacing(object):
                     ProbWinList.append(float(child.getAttribute("ProbWin")))
 
                 ProbWinOffsetList.append([])
-                ListIndex = len(ProbWinOffsetList)-1
+                ListIndex = len(ProbWinOffsetList) - 1
                 ProbWinOffsetList[ListIndex].append(int(EventID))
                 ProbWinOffsetList[ListIndex].append(ProbWinList)
 
@@ -237,9 +237,9 @@ class HorseRacing(object):
                 ProbWinOffsetList[ListIndex].append(TotalProbWin)
                 ProbWinOffsetList[ListIndex].append(Offset)
 
-                OldRacer10 = float('%f' % ProbWinList[len(ProbWinList)-1])
-                ProbWinList[len(ProbWinList)-1] += Offset
-                NewRacer10 = float('%0.6f' % ProbWinList[len(ProbWinList)-1])
+                OldRacer10 = float('%f' % ProbWinList[len(ProbWinList) - 1])
+                ProbWinList[len(ProbWinList) - 1] += Offset
+                NewRacer10 = float('%0.6f' % ProbWinList[len(ProbWinList) - 1])
 
                 #RacerElement[9].setAttribute("ProbWin", str(NewRacer10))
                 #for child in RacerElement:

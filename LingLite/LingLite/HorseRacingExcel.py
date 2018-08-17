@@ -31,7 +31,7 @@ class HorseRacingExcel(object):
         ws = wb.add_sheet(str(EventID))
 
         ws.write(0, 0, "Combination Type", self.contextStyle)
-        ws.col(0).width =  self.colWidth
+        ws.col(0).width = self.colWidth
         ws.write(0, 1, "Combination", self.contextStyle)
         ws.col(1).width = self.colWidth
         ws.write(0, 2, "Odds", self.contextStyle)
@@ -95,7 +95,7 @@ class HorseRacingExcel(object):
         ws.write(0, 0, "Event ID", self.contextStyle)
         ws.col(0).width = self.colWidth
         ws.write(0, 1, "Combination Type", self.contextStyle)
-        ws.col(1).width =  self.colWidth
+        ws.col(1).width = self.colWidth
         ws.write(0, 2, "Combination", self.contextStyle)
         ws.col(2).width = self.colWidth
         ws.write(0, 3, "Odds", self.contextStyle)
@@ -145,19 +145,19 @@ class HorseRacingExcel(object):
 
         for col in range(1,11):
             ws.write(0, col, "Racer" + str(col), self.contextStyle)
-            ws.col(col).width =  colWidth
+            ws.col(col).width = colWidth
 
         ws.write(0, 11, "Total", self.contextStyle)
-        ws.col(11).width =  colWidth
+        ws.col(11).width = colWidth
 
         ws.write(0, 12, "Offset", self.contextStyle)
-        ws.col(12).width =  colWidth
+        ws.col(12).width = colWidth
 
         ws.write(0, 13, "New Racer10", self.contextStyle)
-        ws.col(13).width =  colWidth
+        ws.col(13).width = colWidth
 
         ws.write(0, 14, "New Total", self.contextStyle)
-        ws.col(14).width =  colWidth
+        ws.col(14).width = colWidth
 
         row = 1
         for EventList in ProbWinOffsetList:

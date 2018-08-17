@@ -11,6 +11,7 @@ import HorseRacing as HR
 
 
 if __name__ == '__main__':
+
     horseracing = HR.HorseRacing()
     #horseracing.WriteXMLToDB()
     #horseracing.FindMaxOddsForEachRTP()
