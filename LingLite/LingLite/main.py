@@ -12,6 +12,9 @@ import HorseRacing as HR
 
 if __name__ == '__main__':
     horseracing = HR.HorseRacing()
-    horseracing.WriteXMLToDB()
+    #horseracing.WriteXMLToDB()
+    #horseracing.FindMaxOddsForEachRTP()
+    #horseracing.GetBetInformation()
+    horseracing.AdjustProbWinForXML()
 
     print('\nProgram executed completed!\n')

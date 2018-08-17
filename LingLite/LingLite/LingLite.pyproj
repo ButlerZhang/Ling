@@ -25,6 +25,9 @@
     <Compile Include="HorseRacing.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HorseRacingExcel.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
     <Compile Include="MSSQLDB.py">
       <SubType>Code</SubType>

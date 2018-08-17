@@ -241,3 +241,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# user define
+/LingLite/LingLite/DataSource/*
+/LingLite/LingLite/ResultFiles/*
