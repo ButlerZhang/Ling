@@ -22,15 +22,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Example4.py">
+    <Compile Include="Example4_MultiProcess.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
-    <Compile Include="Example1.py" />
-    <Compile Include="Example2.py">
+    <Compile Include="Example1_IO.py" />
+    <Compile Include="Example2_FileDirectory.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Example3.py">
+    <Compile Include="Example3_Serialization.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

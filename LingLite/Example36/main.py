@@ -8,7 +8,7 @@ g_resultFileName2 = r"ResultFiles//result2.txt"
 
 import os
 from multiprocessing import Queue, Process, Pool, Pipe
-import Example4 as E4
+import Example4_MultiProcess as E4
 
 
 if __name__ == '__main__':
