@@ -2,16 +2,20 @@ import sys
 print(sys.version)
 print('\n')
 
-sourceFileName = r"DataSource//Naughty Brother.txt"
-resultFileName1 = r"ResultFiles//result1.txt"
-resultFileName2 = r"ResultFiles//result2.txt"
+g_sourceFileName = r"DataSource//Naughty Brother.txt"
+g_resultFileName1 = r"ResultFiles//result1.txt"
+g_resultFileName2 = r"ResultFiles//result2.txt"
+
+import os
+from multiprocessing import Queue, Process, Pool, Pipe
+import Example4 as E4
 
 
-import Example_3 as E3
-
-E3.Dumps(sourceFileName, resultFileName1)
-
-E3.Dump("hello", resultFileName2)
-
-print(E3.Load(resultFileName1))
-print(E3.Load(resultFileName2))
+if __name__ == '__main__':
+    pipe = Pipe()
+    p1 = Process(target=E4.proc_send, args=(pipe[0], ['url_'+str(i) for i in range(10)]))
+    p2 = Process(target=E4.proc_recv, args=(pipe[1],))
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
