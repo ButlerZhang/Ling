@@ -25,6 +25,9 @@
     <Compile Include="Example4_MultiProcess.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Example5_MultiThread.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
     <Compile Include="Example1_IO.py" />
     <Compile Include="Example2_FileDirectory.py">
