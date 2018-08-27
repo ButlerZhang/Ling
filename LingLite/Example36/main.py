@@ -7,9 +7,17 @@ g_resultFileName1 = r"ResultFiles//result1.txt"
 g_resultFileName2 = r"ResultFiles//result2.txt"
 
 import os
-from multiprocessing import Queue, Process, Pool, Pipe
-import Example5_MultiThread as E5
+import Example6_Coroutine as E6
+from gevent.pool import Pool
 
-#E5.CreateThreadMethod1()
-#E5.CreateThreadMethod2()
-E5.TestLock()
+from gevent import monkey
+monkey.patch_all()
+import gevent
+
+
+
+if __name__ == "__main__":
+    pool = Pool(2)
+    urls = [r"https://github.com/", r"https://www.python.org/", r"http://www.cnblogs.com/"]
+    results = pool.map(E6.run_task, urls)
+    print(results)
