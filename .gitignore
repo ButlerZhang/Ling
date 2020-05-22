@@ -243,6 +243,6 @@ ModelManifest.xml
 .fake/
 
 # user define
-/LingLite/HorseRacingDemo/DataSource/*
-/LingLite/HorseRacingDemo/ResultFiles/*
-/LingLite/Example36/ResultFiles/*
+/SourceCode/HorseRacingDemo/DataSource/*
+/SourceCode/HorseRacingDemo/ResultFiles/*
+/SourceCode/Example36/ResultFiles/*
