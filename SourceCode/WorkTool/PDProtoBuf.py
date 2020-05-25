@@ -16,7 +16,7 @@ class PDProtoBuf(object):
                 print(TabString + data)
                 fileHandler.write(TabString + data + "\n")
 
-                if data == "{":
+                if data == '{':
                     TabString += "\t"
 
     def ContextDataFormat(self, FileData):
@@ -26,14 +26,17 @@ class PDProtoBuf(object):
         for ch in FileData:
             if ch == '{':
                 DataList.append(Word)
-                DataList.append("{")
+                DataList.append('{')
                 Word = ""
 
             elif ch == '}':
                 if len(Word) > 0:
-                    DataList[len(DataList)-1] += Word
+                    if Word.find('=') >= 0:
+                        DataList.append(Word + ',')
+                    else :
+                        DataList[len(DataList)-1] += Word
                     Word = ""
-                DataList.append("}")
+                DataList.append('}')
                 Word = ""
 
             elif ch == '[':
@@ -43,7 +46,7 @@ class PDProtoBuf(object):
                 if len(Word) == 0:
                     DataList[len(DataList)-1] += ch
                 else:
-                    DataList.append(Word + "]")
+                    DataList.append(Word + ']')
                     Word = ""
 
             elif ch == ',':
@@ -53,7 +56,7 @@ class PDProtoBuf(object):
                     DataList[len(DataList)-1] += Word + ch
                     Word = ""
                 elif Word.find('[') < 0 or Word.find('@') > 0:
-                    DataList.append(Word + ",")
+                    DataList.append(Word + ',')
                     Word = ""
                 else:
                     Word += ch
@@ -61,5 +64,10 @@ class PDProtoBuf(object):
             elif ch != '\n':
                 if ch != ' ' or len(Word) > 0:
                     Word += ch
+
+            #debug
+            #for Data in DataList:
+            #    if Data.find("powerCrapsChipsAmount") >= 0:
+            #        print("I come here")
 
         self.WriteList("result.txt", DataList)
