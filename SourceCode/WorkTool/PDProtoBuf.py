@@ -5,69 +5,94 @@
 class PDProtoBuf(object):
     """format protobuf message for read"""
 
-    def WriteList(self, FileName, DataList):
-        TabString =""
-        with open(FileName, 'w') as fileHandler:
-            for data in DataList:
+    def __init__(self):
+        self.__fileCount = 1
+        self.__resultFileName = ""
 
-                if data.find('}') >=0 :
-                    TabString = TabString[0: len(TabString)-1]
+    def AnalyzeLogFie(self, fileName):
+        #targtMap = {"ContextData{": self.FormatData, "CommandData{": self.FormatData}
+        targetList = ["ContextData{", "CommandData{"]
 
-                print(TabString + data)
-                fileHandler.write(TabString + data + "\n")
+        with open(fileName, 'r') as fileHandler:
+            for line in fileHandler.readlines():
 
-                if data == '{':
-                    TabString += "\t"
+                for target in targetList:
+                    startIndex = line.find(target)
 
-    def ContextDataFormat(self, FileData):
-        Word = ""
-        DataList = []
+                    if startIndex >= 0:
+                        line = line[startIndex:]
+                        self.FormatData(line, target)
 
-        for ch in FileData:
+    def FormatData(self, fileData, dataType):
+        word = ""
+        dataList = []
+
+        for ch in fileData:
             if ch == '{':
-                DataList.append(Word)
-                DataList.append('{')
-                Word = ""
+                dataList.append(word)
+                dataList.append('{')
+                word = ""
 
             elif ch == '}':
-                if len(Word) > 0:
-                    if Word.find('=') >= 0:
-                        DataList.append(Word + ',')
+                if len(word) > 0:
+                    if word.find('=') >= 0:
+                        dataList.append(word + ',')
                     else :
-                        DataList[len(DataList)-1] += Word
-                    Word = ""
-                DataList.append('}')
-                Word = ""
+                        dataList[len(dataList)-1] += word
+                    word = ""
+                dataList.append('}')
+                word = ""
 
             elif ch == '[':
-                Word += ch
+                word += ch
 
             elif ch == ']':
-                if len(Word) == 0:
-                    DataList[len(DataList)-1] += ch
+                if len(word) == 0:
+                    dataList[len(dataList)-1] += ch
                 else:
-                    DataList.append(Word + ']')
-                    Word = ""
+                    dataList.append(word + ']')
+                    word = ""
 
             elif ch == ',':
-                if len(Word) == 0:
-                    DataList[len(DataList)-1] += ch
-                elif Word.find('=') < 0:
-                    DataList[len(DataList)-1] += Word + ch
-                    Word = ""
-                elif Word.find('[') < 0 or Word.find('@') > 0:
-                    DataList.append(Word + ',')
-                    Word = ""
+                if len(word) == 0:
+                    dataList[len(dataList)-1] += ch
+                elif word.find('=') < 0:
+                    dataList[len(dataList)-1] += word + ch
+                    word = ""
+                elif word.find('[') < 0 or word.find('@') > 0:
+                    dataList.append(word + ',')
+                    word = ""
                 else:
-                    Word += ch
+                    word += ch
 
             elif ch != '\n':
-                if ch != ' ' or len(Word) > 0:
-                    Word += ch
+                if ch != ' ' or len(word) > 0:
+                    word += ch
 
             #debug
-            #for Data in DataList:
-            #    if Data.find("powerCrapsChipsAmount") >= 0:
+            #for data in dataList:
+            #    if data.find("powerCrapsChipsAmount") >= 0:
             #        print("I come here")
 
-        self.WriteList("result.txt", DataList)
+        fileName = str(self.__fileCount) + dataType[:len(dataType)-1] + ".txt"
+        self.WriteList(fileName, dataList)
+        self.__fileCount += 1
+
+    def WriteList(self, fileName, dataList):
+        tabString =""
+        with open(fileName, 'w') as fileHandler:
+            for data in dataList:
+
+                if data.find('}') >=0 :
+                    tabString = tabString[0: len(tabString)-1]
+
+                print(tabString + data)
+                fileHandler.write(tabString + data + "\n")
+
+                if data == '{':
+                    tabString += "\t"
+
+if __name__ == '__main__':
+    print("start ...")
+    PDProtoBuf().AnalyzeLogFie("AspectGaming.log")
+    print('\nProgram executed completed!\n')

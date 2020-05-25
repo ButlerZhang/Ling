@@ -246,3 +246,7 @@ ModelManifest.xml
 /SourceCode/HorseRacingDemo/DataSource/*
 /SourceCode/HorseRacingDemo/ResultFiles/*
 /SourceCode/Example36/ResultFiles/*
+/SourceCode/WorkTool/*.txt
+/SourceCode/WorkTool/dist/*
+/SourceCode/WorkTool/build/*
+/SourceCode/WorkTool/PDProtoBuf.spec
