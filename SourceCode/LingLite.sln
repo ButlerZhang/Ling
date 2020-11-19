@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Spider", "Spider\Spider.pyproj", "{044F702E-58DC-4835-A007-4FF0C74DDC2C}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Template", "Template\Template.pyproj", "{A98F9994-5CEC-4B13-AE2C-46BEAA3B7643}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "WorkTool", "WorkTool\WorkTool.pyproj", "{907781FE-293D-43EE-8E2A-A9014F4F3FC7}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AlienInvasion", "AlienInvasion\AlienInvasion.pyproj", "{6729B1BB-4875-4E42-A544-521A17EB334C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,8 @@ Global
 		{A98F9994-5CEC-4B13-AE2C-46BEAA3B7643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907781FE-293D-43EE-8E2A-A9014F4F3FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{907781FE-293D-43EE-8E2A-A9014F4F3FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6729B1BB-4875-4E42-A544-521A17EB334C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6729B1BB-4875-4E42-A544-521A17EB334C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
