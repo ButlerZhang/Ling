@@ -1,26 +1,31 @@
 import sys
 import pygame
+from ship import Ship
+from settings import Settings
 
 def run_game():
 
-    #初始化游戏
     pygame.init()
 
-    #创建一个屏幕对象，尺寸是1200*800
-    screen = pygame.display.set_mode((1200,800))
+    ai_settings = Settings()
+    screen = pygame.display.set_mode(
+        (ai_settings.screen_width,
+        ai_settings.screen_height))
 
-    #设置窗口标题
+    #set screen title
     pygame.display.set_caption("Alien Invasion")
 
-    #游戏主循环
+    ship = Ship(screen)
+
     while True:
 
-        #监视键盘和鼠标事件
+        #listen input event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        #让最近绘制的屏幕可见
+        screen.fill(ai_settings.background_color)
+        ship.blitme()
         pygame.display.flip()
 
 run_game()
