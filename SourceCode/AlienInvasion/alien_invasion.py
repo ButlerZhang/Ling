@@ -30,6 +30,10 @@ def run_game():
     #用来保存所有子弹的Group
     bullets = Group()
 
+    #创建一群外星人
+    aliens = Group()
+    gf.create_fleet(ai_settings, screen, ship, aliens)
+
     while True:
 
         #检测事件
@@ -41,7 +45,10 @@ def run_game():
         #更新子弹位置，同时删除无用的子弹
         gf.update_bullets(bullets)
 
+        #更新外星人位置，需要先更新子弹，再更新外星人
+        gf.update_aliens(ai_settings, aliens)
+
         #重新绘制屏幕
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 run_game()

@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="alien.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="alien_invasion.py" />
     <Compile Include="bullet.py">
       <SubType>Code</SubType>
@@ -40,6 +43,7 @@
     <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\alien.bmp" />
     <Content Include="images\ship.bmp" />
   </ItemGroup>
   <PropertyGroup>

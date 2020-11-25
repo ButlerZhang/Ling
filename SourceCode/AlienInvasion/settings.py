@@ -22,3 +22,8 @@ class Settings():
 
         #同时最多能射出多少个子弹
         self.bullets_allowed = 3
+
+        #外星人移动速度
+        self.alien_speed_factor = 1
+        self.fleet_drop_speed = 10
+        self.fleet_direction = 1 #1向右，-1向左，方便计算

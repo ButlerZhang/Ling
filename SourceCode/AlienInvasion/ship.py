@@ -1,5 +1,7 @@
 import pygame
 
+
+
 class Ship():
     """一艘飞船"""
 
