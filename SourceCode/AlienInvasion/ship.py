@@ -9,6 +9,7 @@ class Ship():
         self.screen = screen
         self.ai_settings = ai_settings
 
+        #加载飞船图片
         self.image = pygame.image.load('images/ship.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -37,3 +38,7 @@ class Ship():
     def blitme(self):
         """根据当前位置绘制飞船图片"""
         self.screen.blit(self.image, self.rect)
+
+    def center_ship(self):
+        """让飞船居中"""
+        self.center = self.screen_rect.centerx

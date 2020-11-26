@@ -14,8 +14,11 @@ class Settings():
         #飞船移动速度
         self.ship_speed_factor = 1.5
 
+        #飞船最多有几条命
+        self.ship_limit = 3
+
         #子弹移动速度
-        self.bullet_speed_factor = 1
+        self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = 60,60,60
