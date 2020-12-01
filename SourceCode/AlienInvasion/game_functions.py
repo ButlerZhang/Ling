@@ -25,7 +25,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets):
+def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -35,9 +35,9 @@ def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
             check_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y)
+            check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y)
 
-def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y):
+def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y):
     """在玩家单击Play按钮时开始新游戏"""
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
@@ -46,6 +46,9 @@ def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bul
 
         #重置游戏设置
         ai_settings.initialize_dynamic_settings()
+        sb.prep_score()
+        sb.prep_high_score()
+        sb.prep_level()
 
         #隐藏光标
         pygame.mouse.set_visible(False)
@@ -98,7 +101,7 @@ def create_fleet(ai_settings, screen, ship, aliens):
             create_alien(ai_settings, screen, aliens, alien_number, row_number)
 
 
-def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button):
 
     #使用背景色填充屏幕
     screen.fill(ai_settings.background_color)
@@ -113,6 +116,9 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     #绘制外星人
     aliens.draw(screen)
 
+    #显示得分
+    sb.show_score()
+
     #如果游戏处于非活动状态，就绘制play按钮
     if not stats.game_active:
         play_button.draw_button()
@@ -121,7 +127,7 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     pygame.display.flip()
 
 
-def update_bullets(ai_settings, screen, ship, aliens, bullets):
+def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """更新子弹的位置，并删除已消失的子弹"""
 
     #这里是Group.update()
@@ -133,10 +139,10 @@ def update_bullets(ai_settings, screen, ship, aliens, bullets):
             bullets.remove(bullet)
 
     #删除被击中的外星人
-    check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
+    check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
 
-def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
+def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """检测子弹和外星人是否碰撞"""
 
     #先遍历bullets中的每个子弹，再遍历aliens中的每个外星人；
@@ -144,11 +150,24 @@ def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
     #后面两个True表示删除重叠的子弹和外星人
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
 
+    #更新得分
+    if collisions:
+        #字典的每个值都是一个列表，表示被同一颗子弹消灭的所有外星人
+        for aliens in collisions.values():
+            stats.score += ai_settings.alien_points * len(aliens)
+            sb.prep_score()
+        check_high_score(stats, sb)
+
     #当外星人全部消灭后，产生新的外星人群
     if len(aliens) == 0:
         #清空子弹，clear函数有其它作用
         bullets.empty()
         ai_settings.increase_speed()
+
+        #提高等级
+        stats.level += 1
+        sb.prep_level()
+
         create_fleet(ai_settings, screen, ship, aliens)
 
 
@@ -231,3 +250,9 @@ def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
 
     #检查外星人是否达到屏幕底部、
     check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
+
+def check_high_score(stats, sb):
+    """检查是否诞生了新的最高得分"""
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score()
