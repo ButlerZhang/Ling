@@ -20,9 +20,12 @@ def run_game():
     ai_settings = Settings()
 
     #初始化准备显示的窗口
-    screen = pygame.display.set_mode(
-        (ai_settings.screen_width,
-        ai_settings.screen_height))
+    #screen = pygame.display.set_mode(
+    #    (ai_settings.screen_width,
+    #    ai_settings.screen_height))
+
+    #可以通过参数启动全屏窗口
+    screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 
     #设置窗口标题
     pygame.display.set_caption("Alien Invasion")
@@ -63,4 +66,5 @@ def run_game():
         #重新绘制屏幕
         gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
 
-run_game()
+if __name__ == '__main__':
+   run_game()

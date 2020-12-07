@@ -6,6 +6,13 @@ from alien import Alien
 from bullet import Bullet
 
 
+def safe_exit(msg):
+    try:
+        sys.exit()
+        print("Program is quit: " + msg)
+    except:
+        print("Error exception: " + msg)
+
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
     if event.key == pygame.K_RIGHT:
@@ -15,7 +22,9 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_SPACE:
         fire_bullet(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
-        sys.exit()
+        safe_exit("enter q")
+    elif event.key == pygame.K_ESCAPE:
+        safe_exit("enter ESC")
 
 
 def check_keyup_events(event, ship):
@@ -28,7 +37,7 @@ def check_keyup_events(event, ship):
 def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit()
+            safe_exit("pygame quit")
         elif event.type == pygame.KEYDOWN:
             check_keydown_events(event, ai_settings, screen, ship, bullets)
         elif event.type == pygame.KEYUP:
@@ -212,11 +221,21 @@ def check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets):
 def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
     """响应被外星人撞到的飞船"""
 
-    if stats.ships_left > 0:
+    #将飞船的可用命减1
+    stats.ships_left -= 1
+    sb.prep_ships()
 
-        #将飞船的可用命减1
-        stats.ships_left -= 1
-        sb.prep_ships()
+    if stats.ships_left > 0:
+        #清空外星人列表和子弹列表
+        aliens.empty()
+        bullets.empty()
+
+        #创建一群新的外星人，并将飞船放到屏幕底端中央
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
+
+        #暂停
+        sleep(1)
 
     else:
 
@@ -225,17 +244,6 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
 
         #恢复光标
         pygame.mouse.set_visible(True)
-
-    #清空外星人列表和子弹列表
-    aliens.empty()
-    bullets.empty()
-
-    #创建一群新的外星人，并将飞船放到屏幕底端中央
-    create_fleet(ai_settings, screen, ship, aliens)
-    ship.center_ship()
-
-    #暂停
-    sleep(1)
 
 
 def update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets):
@@ -252,6 +260,7 @@ def update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets):
 
     #检查外星人是否达到屏幕底部、
     check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets)
+
 
 def check_high_score(stats, sb):
     """检查是否诞生了新的最高得分"""

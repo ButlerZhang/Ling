@@ -1,11 +1,16 @@
+import ctypes
+
+
+
 class Settings():
     """所有配置信息"""
 
     def __init__(self):
 
         #屏幕设置
-        self.screen_width = 900
-        self.screen_height = 600
+        #self.screen_width = 900
+        #self.screen_height = 600
+        self.initialize_width_height()
 
         #screen background color
         #red_color = (255,0,0)
@@ -55,3 +60,10 @@ class Settings():
 
         self.alien_points = int(self.alien_points * self.score_scale)
         #print(self.alien_points)
+
+    def initialize_width_height(self):
+        """获取屏幕分辨率"""
+
+        winapi = ctypes.windll.user32
+        self.screen_width = winapi.GetSystemMetrics(0)
+        self.screen_height = winapi.GetSystemMetrics(1)
