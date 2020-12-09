@@ -13,7 +13,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "WorkTool", "WorkTool\WorkTo
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AlienInvasion", "AlienInvasion\AlienInvasion.pyproj", "{6729B1BB-4875-4E42-A544-521A17EB334C}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MatplotlibTest", "MatplotlibTest\MatplotlibTest.pyproj", "{BDD39AAB-71FE-49C3-BC17-68227B2E3C64}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Visual", "Visual\Visual.pyproj", "{BDD39AAB-71FE-49C3-BC17-68227B2E3C64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

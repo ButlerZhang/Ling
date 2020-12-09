@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bdd39aab-71fe-49c3-bc17-68227b2e3c64</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>random_walk_visual.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>die_one_visual.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>MatplotlibTest</Name>
+    <Name>Visual</Name>
     <RootNamespace>MatplotlibTest</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -21,14 +22,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="dice_visual.py" />
+    <Compile Include="die_two_visual.py" />
     <Compile Include="die.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="die_visual.py">
+    <Compile Include="die_one_visual.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="different_dice_visual.py" />
+    <Compile Include="die_different_visual.py" />
     <Compile Include="mpl_squares.py" />
     <Compile Include="random_walk.py">
       <SubType>Code</SubType>
