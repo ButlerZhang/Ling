@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bdd39aab-71fe-49c3-bc17-68227b2e3c64</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>rw_visual.py</StartupFile>
+    <StartupFile>random_walk_visual.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,11 +21,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dice_visual.py" />
+    <Compile Include="die.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="die_visual.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="different_dice_visual.py" />
     <Compile Include="mpl_squares.py" />
     <Compile Include="random_walk.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="rw_visual.py">
+    <Compile Include="random_walk_visual.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scatter_squares.py">
