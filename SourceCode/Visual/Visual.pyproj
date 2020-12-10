@@ -5,7 +5,7 @@
     <ProjectGuid>bdd39aab-71fe-49c3-bc17-68227b2e3c64</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>highs_lows.py</StartupFile>
+    <StartupFile>world_population.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="americas.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="country_codes.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="die_two_visual.py" />
     <Compile Include="die.py">
       <SubType>Code</SubType>
@@ -41,6 +47,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scatter_squares.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="world_population.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
