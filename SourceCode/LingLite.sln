@@ -15,6 +15,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AlienInvasion", "AlienInvas
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Visual", "Visual\Visual.pyproj", "{BDD39AAB-71FE-49C3-BC17-68227B2E3C64}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "WebAPI", "WebAPI\WebAPI.pyproj", "{DD41FA69-182A-4319-93A7-FB29C673A285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{6729B1BB-4875-4E42-A544-521A17EB334C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDD39AAB-71FE-49C3-BC17-68227B2E3C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDD39AAB-71FE-49C3-BC17-68227B2E3C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD41FA69-182A-4319-93A7-FB29C673A285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD41FA69-182A-4319-93A7-FB29C673A285}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
