@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>dd41fa69-182a-4319-93a7-fb29c673a285</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>python_repos.py</StartupFile>
+    <StartupFile>hn_submissions.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="bar_descriptions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="hn_submissions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="python_repos.py" />
