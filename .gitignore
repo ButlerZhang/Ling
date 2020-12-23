@@ -250,3 +250,5 @@ ModelManifest.xml
 /SourceCode/WorkTool/dist/*
 /SourceCode/WorkTool/build/*
 /SourceCode/WorkTool/PDProtoBuf.spec
+/SourceCode/LearningLog/ll_env/*
+/SourceCode/LearningLog/db.sqlite3
